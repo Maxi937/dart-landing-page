@@ -1,18 +1,28 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import Router from "./Router";
+import { QueryClientProvider, QueryClient } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 import SiteHeader from "./components/SiteHeader";
-import HomePage from "./pages/HomePage";
 
-function App() {
-	const location = useLocation();
+const rootElement = createRoot(document.getElementById("root"));
 
-	return (
-		<>
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			staleTime: 360000,
+			refetchInterval: 360000,
+			refetchOnWindowFocus: false,
+		},
+	},
+});
+
+rootElement.render(
+	<QueryClientProvider client={queryClient}>
+		<BrowserRouter>
 			<SiteHeader />
-			<Routes location={location} key={location.pathname}>
-				<Route path="/" element={<HomePage />} />
-			</Routes>
-		</>
-	);
-}
-
-export default App;
+			<Router/>
+		</BrowserRouter>
+		<ReactQueryDevtools initialIsOpen={false} />
+	</QueryClientProvider>
+);

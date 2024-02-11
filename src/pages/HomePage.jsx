@@ -1,16 +1,14 @@
-import { Typography } from "@mui/material";
+import StyledHeader from "../components/StyledHeader";
+import JiraTimeline from "../components/JiraTimeline";
 
-const styles = {
-  fontWeight: "900",
-  padding: "100px"
-};
 
 const HomePage = () => {
-  return (
-    <Typography sx={styles} align="center" variant="h3">
-      In Development
-    </Typography>
-  );
+	return (
+		<>
+			<StyledHeader text="In Developmnt" />
+			<JiraTimeline />
+		</>
+	);
 };
 
 export default HomePage;
