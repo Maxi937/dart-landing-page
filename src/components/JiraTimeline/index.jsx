@@ -15,7 +15,7 @@ function JiraTimeline() {
 
 	return (
 		<Box>
-			<Typography>{data.board.location.projectName}</Typography>
+			{/* <Typography>{data.board.location.projectName}</Typography> */}
             <SprintCalender sprints={data.sprints}/>
 		</Box>
 	);
