@@ -14,7 +14,8 @@ export function loadconfig() {
       successMessage(enviroment)
       dotenv.config({ path: "./.env" });
       break
-    case "prod":
+    case "production":
+      console.log("prod loaded")
       successMessage(enviroment)
       dotenv.config({ path: "./.env" });
       break

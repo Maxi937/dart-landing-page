@@ -6,8 +6,8 @@
   "main": "src/app.js",
   "type": "module",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node .src/app.js",
-    "devprod": "cross-env NODE_ENV=devprod node .src/app.js",
+    "start": "cross-env NODE_ENV=production node src/app.js",
+    "devprod": "cross-env NODE_ENV=devprod node src/app.js",
     "dev": "cross-env NODE_ENV=development nodemon .src/app.js",
     "aws": "cross-env NODE_ENV=aws nodemon .src/app.js",
     "test": "cross-env NODE_ENV=test-development mocha --timeout 15000 --ui tdd test/features/$FILE/*.js -exit",
