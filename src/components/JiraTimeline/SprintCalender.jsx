@@ -41,9 +41,10 @@ function SprintCalender({ sprints }) {
   const [selectedSprint, setSelectedSprint] = useState(null);
 
   function handleMouseOver(event, sprint) {
-    setSelectedSprint(sprint);
-    console.log(sprint);
-    setAnchorEl(event.currentTarget);
+    if (sprint.issues.length >= 1) {
+      setSelectedSprint(sprint);
+      setAnchorEl(event.currentTarget);
+    }
   }
 
   function handleMouseOut(event) {
@@ -66,9 +67,17 @@ function SprintCalender({ sprints }) {
           >
             <Typography sx={style.label}>{sprint.name}</Typography>
           </StepLabel>
+
           <Popover
             sx={{
               pointerEvents: "none",
+            }}
+            slotProps={{
+              paper: {
+                sx: {
+                  backgroundColor: "black", // Background should be red
+                },
+              },
             }}
             id={id}
             disableRestoreFocus
@@ -80,7 +89,7 @@ function SprintCalender({ sprints }) {
               horizontal: "center",
             }}
           >
-            {selectedSprint && <SprintHover sprint={selectedSprint} />}
+            {selectedSprint && <SprintHover key={sprint.name} sprint={selectedSprint} />}
           </Popover>
         </Step>
       ))}
