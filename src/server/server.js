@@ -55,10 +55,19 @@ async function setupServer() {
     handler: {
       directory: { path: "./public/dist" },
     },
-    // if ever needed add auth strat to return to "/" if not authed
     options: { auth: false },
   };
   server.route(react);
+
+  const gallery = {
+    method: "GET",
+    path: "/gallery/{param*}",
+    handler: {
+      directory: { path: "./public/gallery" },
+    },
+    options: { auth: false },
+  };
+  server.route(gallery);
 
   // This adds routes from each feature with a default export
   try {
